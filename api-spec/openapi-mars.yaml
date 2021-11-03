@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: 'Mars Concept Title - Mars-16'
+  description: 'Description of the Mars API - Mars-16'
+  version: 0.0.1
+servers:
+  - url: https://project-ii.ti.howest.be/mars-16
+    description: 'Public API'
+  - url: http://localhost:8080/
+    description: 'Local API'
+paths:
+  /api/quotes:
+    get:
+      description: Get a random quote
+      operationId: randomQuote
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/quote'
+    post:
+      description: Create a nice quote
+      operationId: createQuote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quote:
+                  type: string
+              required:
+                - quote
+            examples:
+              the-future:
+                value:
+                  quote: The future depends on what you do today.
+                description: You can't argue with the wise guy Mahatma Gandhi, can you?
+          text/plain:
+            schema:
+              type: string
+              example: "If everybody minded their own business, the world would go around a great deal faster than it does."
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/quote'
+  /api/quotes/{quoteId}:
+    get:
+      description: Get a nice quote
+      operationId: getQuote
+      parameters:
+        - in: path
+          name: quoteId
+          required: true
+          schema:
+            type: integer
+          description: The quote id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/quote'
+              examples:
+                two infinite things:
+                  value:
+                    value: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+                    id: 21
+                  description: Albert Einstein at his best :)
+                finding magic:
+                  value:
+                    value: "Those who don't believe in magic will never find it."
+                    id: 34
+                  description: Who doesn't love Roald Dahl?
+    put:
+      description: Update nice quote
+      operationId: updateQuote
+      parameters:
+        - in: path
+          name: quoteId
+          required: true
+          schema:
+            type: integer
+          description: The quote ID
+          example: 42
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quote:
+                  type: string
+              required:
+                - quote
+            examples:
+              dragons exist:
+                value:
+                  quote: "Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."
+                description: Neil Gaiman, from the book Coraline
+              mistakes do something:
+                value:
+                  quote: "I hope that in this year to come, you make mistakes. Because if you are making mistakes... you're Doing Something."
+                description: Neil Gaiman is a genius.
+      responses:
+        '200':
+          description: Created
+    delete:
+      description: Delete nice quote
+      operationId: deleteQuote
+      parameters:
+        - in: path
+          name: quoteId
+          required: true
+          schema:
+            type: integer
+          description: The quote Id
+          example: 55
+      responses:
+        '200':
+          description: Deleted
+
+components:
+  schemas:
+    quote:
+      type: object
+      properties:
+        value:
+          type: string
+          x-faker: lorem.sentence
+          example: "Life is a disease: sexually transmitted, and invariably fatal."
+        id:
+          type: integer
+          minimum: 1
+          example: 8
+      required:
+        - value
+        - id
+      example:
+        value: See, the problem is that God gives men a brain and a penis, and only enough blood to run one at a time.
+        id: 89
