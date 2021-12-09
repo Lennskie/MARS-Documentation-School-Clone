@@ -68,4 +68,4 @@ components:
         circle:
           description: return coordinates of dangerzones, radius is in km (expect more objects than 1.)
           example:
-            { lat: 52.377956, lon: 2.653656, radius: 3 }
+            { "location" : { "longitude" : 3.555, "latitude" : 7.888}, "radius" : 50 }
