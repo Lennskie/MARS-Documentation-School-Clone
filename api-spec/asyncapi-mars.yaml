@@ -1,0 +1,47 @@
+asyncapi: '2.2.0'
+info:
+  title: Geolocation Service
+  version: 1.0.0
+  description: This service is in charge of processing geolocation updates
+channels:
+  vehicle/moved:
+    subscribe:
+      message:
+        $ref: '#/components/messages/VehicleMoved'
+  client/moved:
+    subscribe:
+      message:
+        $ref: '#/components/messages/ClientMoved'
+
+
+
+components:
+  messages:
+    VehicleMoved:
+      payload:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: Identifier Of The Vehicle
+          location:
+            type: object
+            properties:
+              longitude:
+                type: number
+              latitude:
+                type: number
+    ClientMoved:
+      payload:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: Identifier Of The Client
+          location:
+            type: object
+            properties:
+              longitude:
+                type: number
+              latitude:
+                type: number
