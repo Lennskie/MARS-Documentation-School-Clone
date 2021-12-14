@@ -9,6 +9,19 @@ servers:
   - url: http://localhost:8080/
     description: 'Local API'
 paths:
+  /api/subscriptions:
+    get:
+      operationId: getSubscriptions
+      summary: Get subscriptions
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Subscription"
   /api/dangerzones:
     summary: get dangerous zones, radius is in km (expect more objects than 1.)
     description: gets all the dangerous zones on Mars by coordinates, radius is in km (expect more objects than 1.)
@@ -63,6 +76,8 @@ paths:
 
 components:
   schemas:
+    Subscription:
+      type: object
     dangerzones:
       properties:
         circle:
