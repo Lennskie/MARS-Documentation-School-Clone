@@ -111,6 +111,41 @@ paths:
                 enum:
                   - dangerous
                   - not-dangerous
+  /api/domes:
+    get:
+      operationId: getDomes
+      summary: Get domes
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dome'
+  /api/domes/{domeId}:
+    get:
+      operationId: getDome
+      summary: Get dome by id
+      parameters:
+        - name: domeId
+          in: path
+          description: Dome identifier sent in url /domes/{domeId}
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/dome'
 
 components:
   schemas:
