@@ -9,6 +9,41 @@ servers:
   - url: http://localhost:8080/
     description: 'Local API'
 paths:
+  /api/vehicles:
+    get:
+      operationId: getVehicles
+      summary: Get vehicles
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/vehicle'
+  /api/vehicles/{vehicleId}:
+    get:
+      operationId: getVehicle
+      summary: Get vehicle by id
+      parameters:
+        - name: vehicleId
+          in: path
+          description: Vehicle identifier sent in url /vehicles/{vehicleId}
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/vehicle'
   /api/subscriptions:
     get:
       operationId: getSubscriptions
@@ -94,4 +129,8 @@ components:
           type: string
         price:
           type: integer
-
+    vehicle:
+      type: object
+      properties:
+        identifier:
+          type: string
