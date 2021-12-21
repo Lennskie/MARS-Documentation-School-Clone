@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4be60d3e-8c6f-4bfa-be89-adeb3a265956" name="Default Changelist" comment="">
+    <list default="true" id="4be60d3e-8c6f-4bfa-be89-adeb3a265956" name="Default Changelist" comment="Add Clients">
+      <change beforePath="$PROJECT_DIR$/.idea/documentation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc10213aef4f57e8493e1a0216f386862934cd84" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,15 +34,26 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="20oweLaYPhisTrLkPLdZvcdrNWi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../client" />
     <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
@@ -56,6 +70,28 @@
       <workItem from="1636724344371" duration="944000" />
       <workItem from="1637260475498" duration="11000" />
     </task>
+    <task id="LOCAL-00001" summary="Add subscriptions api">
+      <created>1639485865706</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639485865706</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add subscriptions api with attributes">
+      <created>1640004228406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1640004228406</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Clients">
+      <created>1640108225176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640108225176</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,16 +107,12 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1637260485563">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1637260485563" />
-    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1637233323735">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1637233323735" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add subscriptions api" />
+    <MESSAGE value="Add subscriptions api with attributes" />
+    <MESSAGE value="Add vehicles" />
+    <MESSAGE value="Add Clients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Clients" />
   </component>
 </project>
