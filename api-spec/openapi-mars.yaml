@@ -9,6 +9,57 @@ servers:
   - url: http://localhost:8080/
     description: 'Local API'
 paths:
+  /api/clients:
+    get:
+      operationId: getClients
+      summary: Get clients
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/client'
+  /api/clients/subscribed:
+    get:
+      operationId: getSubscribedClients
+      summary: Get subscribed clients
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/client'
+  /api/clients/{clientId}:
+    get:
+      operationId: getClient
+      summary: Get client by identifier
+      parameters:
+        - name: clientId
+          in: path
+          description: Client identifier sent in url /clients/{clientId}
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/client'
   /api/vehicles:
     get:
       operationId: getVehicles
@@ -28,7 +79,7 @@ paths:
   /api/vehicles/{vehicleId}:
     get:
       operationId: getVehicle
-      summary: Get vehicle by id
+      summary: Get vehicle by identifier
       parameters:
         - name: vehicleId
           in: path
@@ -129,8 +180,26 @@ components:
           type: string
         price:
           type: integer
+        start_date:
+          type: string
+        end_date:
+          type: string
+        reimbursed:
+          type: boolean
     vehicle:
       type: object
       properties:
         identifier:
           type: string
+    client:
+      type: object
+      properties:
+        identifier:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        subscription:
+          type: object
+          $ref: '#/components/schemas/subscription'
