@@ -134,3 +134,8 @@ components:
       properties:
         identifier:
           type: string
+    dome:
+      type: object
+      properties:
+        identifier:
+          type: string
