@@ -264,6 +264,22 @@ paths:
                 type: object
                 $ref: '#/components/schemas/dome'
 
+  /api/getDispatches:
+    get:
+      operationId: getDispatches
+      summary: Get dispatches
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dispatch'
 components:
   schemas:           
     location:
@@ -353,3 +369,21 @@ components:
         location:
           type: object
           $ref: "#/components/schemas/location"
+
+    dispatch:
+      type: object
+      properties:
+        source:
+          type: object
+          example: 
+          $ref: "#/components/schemas/client"
+          enum:
+            - $ref: "#/components/schemas/client"
+            - $ref: "#/components/schemas/vehicle"
+        target:
+          type: object
+          example:
+          $ref: "#/components/schemas/vehicle"
+          enum:
+            - $ref: "#/components/schemas/client"
+            - $ref: "#/components/schemas/vehicle"
