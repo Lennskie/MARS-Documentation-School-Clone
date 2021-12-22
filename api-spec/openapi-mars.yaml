@@ -8,6 +8,7 @@ servers:
     description: 'Public API'
   - url: http://localhost:8080/
     description: 'Local API'
+
 paths:
   /api/clients:
     get:
@@ -25,6 +26,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
+
   /api/clients/subscribed:
     get:
       operationId: getSubscribedClients
@@ -41,6 +43,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
+
   /api/clients/{clientId}:
     get:
       operationId: getClient
@@ -60,6 +63,7 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/client'
+
   /api/vehicles:
     get:
       operationId: getVehicles
@@ -72,10 +76,11 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  vehicles:
                     type: array
                     items:
                       $ref: '#/components/schemas/vehicle'
+
   /api/vehicles/{vehicleId}:
     get:
       operationId: getVehicle
@@ -95,6 +100,7 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/vehicle'
+
   /api/vehicles/location/{vehicleId}/{latitude}/{longitude}:
     put:
       operationId: updateVehicleLocation
@@ -124,8 +130,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                example: "Location has been updated"
+                $ref: "#/components/schemas/vehicle"
 
   /api/vehicles/status/{vehicleId}/{status}:
     put:
@@ -150,8 +155,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                example: "Status has been updated"
+                $ref: "#/components/schemas/vehicle"
 
   /api/subscriptions:
     get:
@@ -169,6 +173,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/subscription'
+
   /api/dangerzones:
     summary: get dangerous zones, radius is in km (expect more objects than 1.)
     description: gets all the dangerous zones on Mars by coordinates, radius is in km (expect more objects than 1.)
@@ -183,43 +188,14 @@ paths:
                 type: array
                 items:
                   type: object
-                  $ref: "#/components/schemas/dangerzones/properties/circle"
+                  properties:
+                    location:
+                      example:
+                      $ref: "#/components/schemas/location"
+                    radius:
+                      type: number
+                      example: 2
 
-  /api/dangerzones/{latitude}/{longitude}/{radius}:
-    summary: see if your coordinates are in a dangerous zone, radius is in km (this might not work, the one above will.)
-    description: see if your coordinates are in a dangerous zone, radius is in km (this might not work, the one above will.)
-    get:
-      operationId: getDangerzonesByCoordinates
-      summary: see if your coordinates are in a dangerous zone, radius is in km  (this might not work, the one above will.)
-      parameters:
-        - in: path
-          name: latitude
-          required: true
-          schema:
-            type: number
-            format: float
-        - in: path
-          name: longitude
-          required: true
-          schema:
-            type: number
-            format: float
-        - in: path
-          name: radius
-          required: true
-          schema:
-            type: number
-            format: float
-      responses:
-        200:
-          description: OK
-          content:
-            text/plain:
-              schema:
-                type: string
-                enum:
-                  - dangerous
-                  - not-dangerous
   /api/domes:
     get:
       operationId: getDomes
@@ -232,10 +208,11 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  domes:
                     type: array
                     items:
                       $ref: '#/components/schemas/dome'
+
   /api/domes/{domeId}:
     get:
       operationId: getDome
@@ -257,47 +234,79 @@ paths:
                 $ref: '#/components/schemas/dome'
 
 components:
-  schemas:
-    dangerzones:
+  schemas:           
+    location:
+      type: object
       properties:
-        circle:
-          description: return coordinates of dangerzones, radius is in km (expect more objects than 1.)
-          example:
-            { "location" : { "longitude" : 3.555, "latitude" : 7.888}, "radius" : 50 }
+          latitude:
+            type: number
+            example: 2.34
+          longitude:
+            type: number
+            example: 4.56
     subscription:
       type: object
       properties:
         name:
           type: string
+          example: Silver
         description:
           type: string
+          example: Rescue in Domes where a MARS station is present.
         price:
           type: integer
+          example: 500
         start_date:
           type: string
+          example: 2060-12-22
         end_date:
           type: string
+          example: 2062-12-22
         reimbursed:
           type: boolean
     vehicle:
       type: object
       properties:
-        identifier:
+        occupied:
+          type: boolean
+          example: true
+        identifier: 
           type: string
+          example: AV-001
+        location:
+          type: object
+          $ref: "#/components/schemas/location"
     client:
       type: object
       properties:
         identifier:
           type: string
+          example: MARS-ID-002
         firstname:
           type: string
+          example: John
         lastname:
           type: string
+          example: Doe
         subscription:
           type: object
           $ref: '#/components/schemas/subscription'
+        location:
+          type: object
+          $ref: '#/components/schemas/location'
+        vitals:
+          type: string
+          example: good
+
     dome:
       type: object
       properties:
         identifier:
           type: string
+          example: dome-001
+        size: 
+          type: number
+          example: 2500
+        location:
+          type: object
+          $ref: "#/components/schemas/location"
