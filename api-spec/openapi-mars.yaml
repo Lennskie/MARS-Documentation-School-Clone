@@ -100,7 +100,7 @@ paths:
       operationId: updateVehicleLocation
       summary: updateVehicleLocation
       parameters:
-        - name: identifier
+        - name: vehicleId
           in: path
           description: Vehicle identifier sent in url /vehicles/{vehicleId}
           required: true
