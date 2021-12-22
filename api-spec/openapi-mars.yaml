@@ -95,7 +95,7 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/vehicle'
-  /api/vehicles/{identifier}/{location}:
+  /api/vehicles/{identifier}/{latitude}/{longitude}:
     put:
       operationId: updateVehicleLocation
       summary: updateVehicleLocation
@@ -106,19 +106,18 @@ paths:
           required: true
           schema:
             type: string
-        - name: location
+        - name: latitude
           in: path
-          description: vehicle location
+          description: vehicle latitude
           required: true
           schema:
-            type: object
-            properties:
-              latitude:
-                type: number
-                example: 2
-              longitude:
-                type: number
-                example: 3
+            type: number
+        - name: longitude
+          in: path
+          description: vechile longitude
+          required: true
+          schema:
+            type: number
       responses:
         201:
           description: OK
