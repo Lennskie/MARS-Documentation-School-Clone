@@ -63,6 +63,37 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/client'
+  
+  /api/clients/location/{clientId}/{latitude}/{longitude}:
+    put:
+      operationId: updateClientLocation
+      summary: updateClientLocation
+      parameters:
+        - name: clientId
+          in: path
+          description: Client identifier sent in url /clients/{clientId}
+          required: true
+          schema:
+            type: string
+        - name: latitude
+          in: path
+          description: client latitude
+          required: true
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          description: client longitude
+          required: true
+          schema:
+            type: number
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/client'
 
   /api/vehicles:
     get:
