@@ -264,6 +264,23 @@ paths:
                 type: object
                 $ref: '#/components/schemas/dome'
 
+  /api/overview:
+    get:
+      operationId: getOverview
+      summary: Get overview
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/overview'
+
 components:
   schemas:           
     location:
@@ -353,3 +370,9 @@ components:
         location:
           type: object
           $ref: "#/components/schemas/location"
+
+    overview:
+      type: object
+      properties:
+        identifier:
+          type: string
