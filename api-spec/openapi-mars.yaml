@@ -95,6 +95,38 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/vehicle'
+  /api/vehicles/{identifier}/{location}:
+    put:
+      operationId: updateVehicleLocation
+      summary: updateVehicleLocation
+      parameters:
+        - name: identifier
+          in: path
+          description: Vehicle identifier sent in url /vehicles/{vehicleId}
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          description: vehicle location
+          required: true
+          schema:
+            type: object
+            properties:
+              latitude:
+                type: number
+                example: 2
+              longitude:
+                type: number
+                example: 3
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Location has been updated"
   /api/subscriptions:
     get:
       operationId: getSubscriptions
