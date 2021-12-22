@@ -276,7 +276,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  domes:
+                  dispatches:
                     type: array
                     items:
                       $ref: '#/components/schemas/dispatch'
