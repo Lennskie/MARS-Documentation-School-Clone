@@ -276,10 +276,23 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  vehicles:
                     type: array
                     items:
-                      $ref: '#/components/schemas/overview'
+                      $ref: '#/components/schemas/vehicle'
+                  clients:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/client'
+                  domes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dome'
+                  dispatches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dispatch'
+
 
   /api/dispatches:
     get:
@@ -297,6 +310,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/dispatch'
+
   /api/dispatch/{identifier}:
     get:
       operationId: getDispatch
@@ -332,6 +346,7 @@ paths:
       responses:
         200:
           description: OK
+          
   /api/dispatch/create:
     post:
       operationId: addDispatch
@@ -444,12 +459,6 @@ components:
           type: object
           $ref: "#/components/schemas/location"
 
-    overview:
-      type: object
-      properties:
-        identifier:
-          type: string
-
     dispatch:
       type: object
       properties:
@@ -478,5 +487,5 @@ components:
           type: string
         source_identifier:
           type: string
-        destination_indentifier:
+        destination_identifier:
           type: string
