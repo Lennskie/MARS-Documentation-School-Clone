@@ -315,6 +315,28 @@ paths:
       responses:
         200:
           description: OK
+  /api/dispatch/create:
+    post:
+      operationId: addDispatch
+      summary: add a new dispatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newdispatch'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dispatch:
+                    type: object
+                    $ref: '#/components/schemas/dispatch'
+
 components:
   schemas:           
     location:
@@ -422,3 +444,16 @@ components:
           enum:
             - $ref: "#/components/schemas/client"
             - $ref: "#/components/schemas/dome"
+    newdispatch:
+      type: object
+      properties:
+        identifier:
+          type: string
+        source_type:
+          type: string
+        destination_type:
+          type: string
+        source_identifier:
+          type: string
+        destination_indentifier:
+          type: string
