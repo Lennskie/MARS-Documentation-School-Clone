@@ -22,7 +22,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  clients:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
@@ -39,7 +39,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  clients:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
