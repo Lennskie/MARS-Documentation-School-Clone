@@ -264,6 +264,23 @@ paths:
                 type: object
                 $ref: '#/components/schemas/dome'
 
+  /api/overview:
+    get:
+      operationId: getOverview
+      summary: Get overview
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/overview'
+
   /api/dispatches:
     get:
       operationId: getDispatches
@@ -336,7 +353,7 @@ paths:
                   dispatch:
                     type: object
                     $ref: '#/components/schemas/dispatch'
-
+                      
 components:
   schemas:           
     location:
@@ -426,6 +443,12 @@ components:
         location:
           type: object
           $ref: "#/components/schemas/location"
+
+    overview:
+      type: object
+      properties:
+        identifier:
+          type: string
 
     dispatch:
       type: object
