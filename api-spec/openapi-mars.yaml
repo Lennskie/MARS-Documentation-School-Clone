@@ -22,7 +22,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  clients:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
@@ -39,7 +39,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  clients:
                     type: array
                     items:
                       $ref: '#/components/schemas/client'
@@ -281,6 +281,79 @@ paths:
                     items:
                       $ref: '#/components/schemas/overview'
 
+  /api/dispatches:
+    get:
+      operationId: getDispatches
+      summary: Get dispatches
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dispatches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dispatch'
+  /api/dispatch/{identifier}:
+    get:
+      operationId: getDispatch
+      summary: get dispatch by given identifier
+      parameters:
+        - name: identifier
+          in: path
+          description: Identifier of the dispatch
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dispatch:
+                    type: object
+                    $ref: '#/components/schemas/dispatch'
+    delete:
+      operationId: deleteDispatch
+      summary: delete dispatch with given identifier
+      parameters:
+        - name: identifier
+          in: path
+          description: Identifier of the dispatch
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+  /api/dispatch/create:
+    post:
+      operationId: addDispatch
+      summary: add a new dispatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newdispatch'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dispatch:
+                    type: object
+                    $ref: '#/components/schemas/dispatch'
+                      
 components:
   schemas:           
     location:
@@ -375,4 +448,35 @@ components:
       type: object
       properties:
         identifier:
+          type: string
+
+    dispatch:
+      type: object
+      properties:
+        source:
+          type: object
+          example: 
+              $ref: "#/components/schemas/client"
+          enum:
+            - $ref: "#/components/schemas/client"
+            - $ref: "#/components/schemas/vehicle"
+        destination:
+          type: object
+          example:
+             $ref: "#/components/schemas/vehicle"
+          enum:
+            - $ref: "#/components/schemas/client"
+            - $ref: "#/components/schemas/dome"
+    newdispatch:
+      type: object
+      properties:
+        identifier:
+          type: string
+        source_type:
+          type: string
+        destination_type:
+          type: string
+        source_identifier:
+          type: string
+        destination_indentifier:
           type: string
