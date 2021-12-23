@@ -302,6 +302,19 @@ paths:
                   dispatch:
                     type: object
                     $ref: '#/components/schemas/dispatch'
+    delete:
+      operationId: deleteDispatch
+      summary: delete dispatch with given identifier
+      parameters:
+        - name: identifier
+          in: path
+          description: Identifier of the dispatch
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
 components:
   schemas:           
     location:
