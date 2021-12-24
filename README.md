@@ -19,6 +19,10 @@ We are M.A.R.S. (Mars Active Response System). Our domain is based on IoT and In
 
 A client's health is monitored by a device we put on them, and if a client takes a turn for the worse, an aerial vehicle squad receives their GPS signal and arrives on the scene in minutes. Reaction time and additional perks are dependent on the client's insurance package.
 
+## Proof Of Concept (POC)
+
+Our proof of concept focusses on the employee side. Our clients that are subscribed to our service are monitored by a bio-sensor. When their vitals spike or flatline, we send a team to their location to extract them and bring them to the nearest hospital. The action of sending a team to a client will be done through a map, with clients, domes and vehicles on it. To extract a client, you'll have to click on a clients' dot and assign a vehicle to it. Once those 2 are connected, the closest hospital is determined and the route will be automatically set. We also made dashboards for the employees, so when they're running our website on their 2 monitors they can have a dashboard open and their map open. 
+We did develop a small amount of the client's view aswell. This includes our community aspect feature, the display of the dangerzones for people who are and aren't subscribed to our service.
 
 ## API Specifications
 ### Clients
