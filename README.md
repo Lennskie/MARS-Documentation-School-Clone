@@ -22,7 +22,7 @@ A client's health is monitored by a device we put on them, and if a client takes
 ## Proof Of Concept (POC)
 
 Our proof of concept focuses on the employee side. Our clients that are subscribed to our service are monitored by a bio-sensor. When their vitals spike or flat lined, we send a team to their location to extract them and bring them to the nearest hospital. The action of sending a team to a client will be done through a map, with clients, domes and vehicles on it. To extract a client, you'll have to click on a client's dot and assign a vehicle to it. Once those 2 are connected, the closest hospital is determined and the route will be automatically set. We also made dashboards for the employees, so when they're running our website on their 2 monitors they can have a dashboard open and their map open. 
-We did develop a small amount of the client's view as well. This includes our community aspect feature, the display of the dangerzones for people who are and aren't subscribed to our service.
+We did develop a small amount of the client's view as well. This includes our community aspect feature, the display of the dangerzones for people who are and aren't subscribed to our service. The dangerzones get updated every week and not every minute.
 
 ## API Specifications
 ### Clients
@@ -58,7 +58,7 @@ This endpoint has one use case, and it's to display every subscription type we h
 
 ### Dangerzones
 
-This endpoint will be used to show the clients' map the dangerzones. These zones are marked because there are a lot of people being saved there meaning could be a conflict over there.
+This endpoint will be used to show the clients' map the dangerzones. These zones are marked because there are a lot of people being saved there meaning could be a conflict over there. Every dangerzone gets updated every week. They're not changed every minute.
 
 ### Domes
 
