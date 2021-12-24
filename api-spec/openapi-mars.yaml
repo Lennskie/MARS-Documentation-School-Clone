@@ -462,6 +462,9 @@ components:
     dispatch:
       type: object
       properties:
+        identifier:
+          type: string
+          example: "DISPATCH-001"
         source:
           type: object
           example: 
@@ -476,16 +479,22 @@ components:
           enum:
             - $ref: "#/components/schemas/client"
             - $ref: "#/components/schemas/dome"
+
     newdispatch:
       type: object
       properties:
         identifier:
           type: string
+          example: "DISPATCH-003"
         source_type:
           type: string
+          example: "Vehicle"
         destination_type:
           type: string
+          example: "Client"
         source_identifier:
           type: string
+          example: "AV-002"
         destination_identifier:
           type: string
+          example: "MARS-ID-004"
