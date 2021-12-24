@@ -51,7 +51,7 @@ paths:
       parameters:
         - name: clientId
           in: path
-          description: Client identifier sent in url /clients/{clientId}
+          description: Client identifier sent in GET /api/clients/{clientId}
           required: true
           schema:
             type: string
@@ -71,7 +71,7 @@ paths:
       parameters:
         - name: clientId
           in: path
-          description: Client identifier sent in url /clients/{clientId}
+          description: Client location sent in PUT /api/clients/location/{clientId}/{latitude}/{longitude}
           required: true
           schema:
             type: string
@@ -119,7 +119,7 @@ paths:
       parameters:
         - name: vehicleId
           in: path
-          description: Vehicle identifier sent in url /vehicles/{vehicleId}
+          description: Vehicle identifier sent in GET /api/vehicles/{vehicleId}
           required: true
           schema:
             type: string
@@ -139,7 +139,7 @@ paths:
       parameters:
         - name: vehicleId
           in: path
-          description: Vehicle identifier sent in url /vehicles/{vehicleId}
+          description: Vehicle identifier sent in PUT /api/vehicles/location/{vehicleId}/{latitude}/{longitude}
           required: true
           schema:
             type: string
@@ -170,7 +170,7 @@ paths:
       parameters:
         - name: vehicleId
           in: path
-          description: Vehicle identifier sent in url /vehicles/{vehicleId}
+          description: Vehicle identifier sent in PUT /api/vehicles/status/{vehicleId}/{status}
           required: true
           schema:
             type: string
@@ -251,7 +251,7 @@ paths:
       parameters:
         - name: domeId
           in: path
-          description: Dome identifier sent in url /domes/{domeId}
+          description: Dome identifier sent in GET /api/domes/{domeId}
           required: true
           schema:
             type: string
@@ -276,10 +276,23 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptions:
+                  vehicles:
                     type: array
                     items:
-                      $ref: '#/components/schemas/overview'
+                      $ref: '#/components/schemas/vehicle'
+                  clients:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/client'
+                  domes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dome'
+                  dispatches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dispatch'
+
 
   /api/dispatches:
     get:
@@ -297,6 +310,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/dispatch'
+
   /api/dispatch/{identifier}:
     get:
       operationId: getDispatch
@@ -332,6 +346,7 @@ paths:
       responses:
         200:
           description: OK
+          
   /api/dispatch/create:
     post:
       operationId: addDispatch
@@ -444,15 +459,12 @@ components:
           type: object
           $ref: "#/components/schemas/location"
 
-    overview:
+    dispatch:
       type: object
       properties:
         identifier:
           type: string
-
-    dispatch:
-      type: object
-      properties:
+          example: "DISPATCH-001"
         source:
           type: object
           example: 
@@ -467,16 +479,22 @@ components:
           enum:
             - $ref: "#/components/schemas/client"
             - $ref: "#/components/schemas/dome"
+
     newdispatch:
       type: object
       properties:
         identifier:
           type: string
+          example: "DISPATCH-003"
         source_type:
           type: string
+          example: "Vehicle"
         destination_type:
           type: string
+          example: "Client"
         source_identifier:
           type: string
-        destination_indentifier:
+          example: "AV-002"
+        destination_identifier:
           type: string
+          example: "MARS-ID-004"
