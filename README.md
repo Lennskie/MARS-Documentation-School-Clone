@@ -89,3 +89,6 @@ This endpoint expects a specific body as explained in the yaml file to create a 
 
 The use cases of these endpoints are to display every dispatch at the dashboards for the employees as well to show/delete/create new dispatches on the employee map.
 
+## User testing report
+
+This is done in a seperate file in this folder. The file is called usertestMARS.md
